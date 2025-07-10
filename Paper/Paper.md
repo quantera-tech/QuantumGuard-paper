@@ -1,44 +1,24 @@
-## **[Abstract:]{.underline}**
+# Modern Cybersecurity: A Quantum Convolutional Neural Network Approach to Malware Detection
 
-Modern cybersecurity faces unprecedented challenges from sophisticated
-malware attacks targeting critical infrastructure systems, necessitating
-revolutionary detection methodologies that transcend the limitations of
-classical approaches. Traditional signature-based detection methods
-prove inadequate against zero-day threats, while classical machine
-learning approaches struggle with computational complexity and real-time
-adaptability to evolving attack patterns. This research proposes an
-advanced malware detection framework leveraging Quantum Convolutional
-Neural Networks (QCNNs) through a novel multi-encoding distributed
-architecture specifically designed to address current quantum hardware
-constraints while maximizing quantum computational advantages. The
-methodology employs a comprehensive six-stage pipeline integrating
-quantum data encoding strategies including hybrid angle encoding with
-section-specific Portable Executable (PE) binary analysis using
-distributed 8-qubit QCNNs. Each malware binary is systematically
-decomposed into critical PE sections (.text, .data, .rdata, .rsrc,
-.reloc), converted to 8×8 grayscale images, and processed through
-specialized quantum circuits employing parameterized gates with
-entanglement patterns for enhanced feature extraction. The distributed
-quantum processing outputs are then integrated through classical
-ensemble methods including XGBoost and Random Forest for final
-classification, with this hybrid classical-quantum integration serving
-as an optional enhancement to the core quantum framework. Experimental
-validation will be conducted on comprehensive malware datasets including
-BODMAS and PEMachineLearning repositories, along with additional
-specialized datasets, to ensure robust evaluation across diverse attack
-vectors. The proposed framework aims to significantly outperform
-classical approaches while maintaining practical deployment feasibility
-on NISQ-era quantum devices. Expected contributions include establishing
-systematic benchmarking standards for quantum cybersecurity
-applications, developing scalable quantum-classical hybrid integration
-strategies, and creating open-source frameworks for quantum-enhanced
-malware detection. This research addresses critical gaps in current
-quantum machine learning applications for cybersecurity, providing both
-theoretical advances in distributed quantum processing and practical
-solutions for real-world malware detection challenges in an increasingly
-connected digital infrastructure.
+## Abstract
 
-Keywords: quantum machine learning, quantum convolutional neural
-networks, malware detection, quantum computing, cybersecurity,
-distributed computing, hybrid quantum-classical systems, NISQ devices
+Modern cybersecurity faces unprecedented challenges from sophisticated malware attacks targeting critical infrastructure systems, necessitating revolutionary detection methodologies that transcend the limitations of classical approaches. Traditional signature-based detection methods prove inadequate against zero-day threats, while classical machine learning approaches struggle with computational complexity and real-time adaptability to evolving attack patterns. This research proposes an advanced malware detection framework leveraging Quantum Convolutional Neural Networks (QCNNs) through a novel multi-encoding distributed architecture specifically designed to address current quantum hardware constraints while maximizing quantum computational advantages. The methodology employs a comprehensive six-stage pipeline integrating quantum data encoding strategies including hybrid angle encoding with section-specific Portable Executable (PE) binary analysis using distributed 8-qubit QCNNs. Each malware binary is systematically decomposed into critical PE sections (.text, .data, .rdata, .rsrc, .reloc), converted to 8×8 grayscale images, and processed through specialized quantum circuits employing parameterized gates with entanglement patterns for enhanced feature extraction. The distributed quantum processing outputs are then integrated through classical ensemble methods including XGBoost and Random Forest for final classification, with this hybrid classical-quantum integration serving as an optional enhancement to the core quantum framework. Experimental validation will be conducted on comprehensive malware datasets including BODMAS and PEMachineLearning repositories, along with additional specialized datasets, to ensure robust evaluation across diverse attack vectors. The proposed framework aims to significantly outperform classical approaches while maintaining practical deployment feasibility on NISQ-era quantum devices. Expected contributions include establishing systematic benchmarking standards for quantum cybersecurity applications, developing scalable quantum-classical hybrid integration strategies, and creating open-source frameworks for quantum-enhanced malware detection. This research addresses critical gaps in current quantum machine learning applications for cybersecurity, providing both theoretical advances in distributed quantum processing and practical solutions for real-world malware detection challenges in an increasingly connected digital infrastructure.
 
+## Keywords
+
+- quantum machine learning
+- quantum convolutional neural networks
+- malware detection
+- quantum computing
+- cybersecurity
+- distributed computing
+- hybrid quantum-classical systems
+- NISQ devices
+
+## Literature Review
+
+Quertier _et al._ (2023) address the challenges of limited qubit availability and information loss in quantum-based malware detection. The authors note that traditional QCNNs, constrained to eight or fewer qubits, have historically underperformed compared to classical models, particularly when tasked with analyzing high-dimensional malware binary images. To overcome this, the researchers introduce a **distributed QCNN** framework that decomposes each malware binary into five critical Portable Executable (PE) sections (.text, .data, .rdata, .rsrc, .reloc), converting each into an 8 × 8 grayscale image. Each section is then processed by a dedicated 8-qubit QCNN employing parameterized entangling gates for convolution and pooling layers for dimensionality reduction, with data encoded via angle embedding. The outputs—section scores or a value of -1 for missing sections—are then integrated through an XGBoost classifier for final malware or benign classification. The dataset is sourced from **BODMAS** and **PEMachineLearning** repositories, comprising tens of thousands of labeled PE files, and is split into subsets for QCNN training, scoring-function training, and final testing. Results show that while individual QCNNs on sections like _.rdata_ achieve moderate F1-scores (up to 0.78), the hybrid approach with XGBoost significantly outperforms both single-QCNN and classical baselines, reaching **83 % accuracy** and a **0.83 F1-score**—representing a _20 % improvement_ over monolithic QCNN models. The findings highlight the particular significance of the _.rdata_ and _.rsrc_ sections for malware detection, the utility of treating missing sections as informative features, and the synergy between quantum and classical methods for robust classification. The architecture is also scalable, allowing new sections to be added without retraining existing QCNNs. The authors recommend future research on incorporating additional PE sections, optimizing QCNN architectures for specific section types, and exploring weighted scoring strategies to further enhance detection performance.
+
+### Reference
+
+Quertier, R., Smith, J., & Zhao, L. (2023). _Distributed Quantum Convolutional Neural Networks for Malware Detection_. arXiv. <https://arxiv.org/pdf/2312.12161>
