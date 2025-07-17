@@ -21,3 +21,14 @@ Found 5 different types of approaches- PCA, t-SNE, Histogram chart, QR code, Aut
 ## Ponder
 After studying the characteristics of all the 5 approaches PCA might be a suitable candidate for EMBER dataset conversion. Because, it is suitable for 8 qubits QCNN architecture which we will be using.
 
+
+# Thursday, July 17th, 2025
+
+## Discover
+Researched on PCA data reduction approach to convert the feature vectors of EMBER dataset. Tried to understand the characteristics and working mechanism of PCA
+
+## Investigate
+It was found that PCA will be a suitable approach to convert the feature vectors of EMBER dataset. PCA performs data reduction and keeps the important features of all the feature vectors. There are subsections of PCA which are pca8, pca30 etc.
+
+## Ponder
+PCA data reduction approach perfectly fits for the QCNN architecture we will be using on our research. Also, it is considered to be a better approach in areas where we have limitations on the number of qubits we will be using.
