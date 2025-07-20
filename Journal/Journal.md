@@ -32,3 +32,14 @@ It was found that PCA will be a suitable approach to convert the feature vectors
 
 ## Ponder
 PCA data reduction approach perfectly fits for the QCNN architecture we will be using on our research. Also, it is considered to be a better approach in areas where we have limitations on the number of qubits we will be using.
+
+# Sunday, July 20th, 2025
+
+## Discover
+Researched on PCA subsections (pca8, pca30 etc) to convert the feature vectors of EMBER dataset.
+
+## Investigate
+After performing research on multiple subsections of PCA, it was found that pca30 will be a suitable approach to convert the feature vectors. It will reduce the feature vectors to 30 most important components. 
+
+## Ponder
+Pca30 is going to be a suitable approach because, it is reducing all the feature vectors to 30 most important components. In case of pca8, it will reduce to only 8 components.  As a result, substantial amount of information will be lost if pca30 is neglected. 
