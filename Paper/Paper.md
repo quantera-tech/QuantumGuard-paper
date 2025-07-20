@@ -33,3 +33,4 @@ Quertier, R., Smith, J., & Zhao, L. (2023). _Distributed Quantum Convolutional N
 
 Akash, A. R., Ahn, B., Jenkins, A., Khot, A., Silva, L., Tavares-Vengas, H., & Kim, T. (2022). Quantum Convolutional Neural Network-based Online Malware File Detection for Smart Grid Devices. *Proceedings of the 2022 IEEE Conference*. [https://par.nsf.gov/servlets/purl/10566964](https://par.nsf.gov/servlets/purl/10566964)
 
+Yang, L., Ciptadi, A., Laziuk, I., Ahmadzadeh, A., & Wang, G. (2021). BODMAS: An Open Dataset for Learning based Temporal Analysis of PE Malware. Proceedings of the 2021 IEEE Symposium on Security and Privacy Workshops (SPW). IEEE, pp. 78-84
