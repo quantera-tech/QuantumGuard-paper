@@ -43,3 +43,15 @@ After performing research on multiple subsections of PCA, it was found that pca3
 
 ## Ponder
 Pca30 is going to be a suitable approach because, it is reducing all the feature vectors to 30 most important components. In case of pca8, it will reduce to only 8 components.  As a result, substantial amount of information will be lost if pca30 is neglected. 
+
+
+# Monday, July 21th, 2025
+
+## Discover
+Researched on pca30’s implementation to convert the feature vectors of EMBER dataset.
+
+## Investigate
+We can use pca30 feature reduction by importing from scikit learn library. To perform pca30 we have to perform a 5 step implementation which includes standardization, quantum normalization, pca transformation etc. 
+
+## Ponder
+If we perform the 5 step implementation then we should get the pca30 transformed reduced features of EMBER dataset
