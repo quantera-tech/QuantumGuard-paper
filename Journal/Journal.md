@@ -55,3 +55,15 @@ We can use pca30 feature reduction by importing from scikit learn library. To pe
 
 ## Ponder
 If we perform the 5 step implementation then we should get the pca30 transformed reduced features of EMBER dataset
+
+
+# Tuesday, July 22nd, 2025
+
+## Discover
+Compared the data preprocessing steps of EMBER dataset with Tak Hur’s MNIST and Fashion MNIST datasets QCNN classification. The code is available on GitHub repository. 
+
+## Investigate
+There was similarity between the selected steps of EMBER dataset classification and Tak Hur’s QCNN classification. Found that we do not need to convert the feature vectors into image for EMBER dataset. We can perform direct conversion of feature vectors to qubits. 
+
+## Ponder
+As there is similarity between the selected steps of EMBER dataset classification and Tak Hur’s QCNN classification, we can take inspiration about the preprocessing from it. Also, if we do not need to convert the feature vectors into image for EMBER dataset, we can save ourselves from some complex steps. 
