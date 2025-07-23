@@ -55,3 +55,15 @@ We can use pca30 feature reduction by importing from scikit learn library. To pe
 
 ## Ponder
 If we perform the 5 step implementation then we should get the pca30 transformed reduced features of EMBER dataset
+
+
+# Wednesday, July 23rd, 2025
+
+## Discover
+Researched through the entire data preprocessing pipeline of EMBER dataset. Also, researched the working mechanism of the pre-processing pipeline.
+
+## Investigate
+After performing the research it was found that the data preprocessing pipeline of EMBER dataset is about six steps. The pre-processing steps include- data splitting, standardization, pca30 transformation etc. 
+
+## Ponder
+If we perform those six data pre-processing steps if would be able to convert the feature vectors and store the information to 8 qubits. Those 8 qubits will later be used for QCNN classification.
