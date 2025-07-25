@@ -78,3 +78,14 @@ After performing the research it was found that the data preprocessing pipeline 
 ## Ponder
 If we perform those six data pre-processing steps if would be able to convert the feature vectors and store the information to 8 qubits. Those 8 qubits will later be used for QCNN classification.
 
+
+# Thursday, July 24th, 2025
+
+## Discover
+Researched on the coding steps of the finalized pre-processing pipeline of the EMBER dataset. The coding steps will represent the entire preprocessing pipeline of it.
+
+## Investigate
+The coding steps include six sections of data pre-processing stage. Each section have to be executed properly to get the 8 qubits which will used in QCNN classification. 
+
+## Ponder
+If we perform these 6 sections of coding steps to EMBER dataset’s feature vectors then we will be to get the qubits which we require for the QCNN architecture. We may perform a sanity visualization of pca30 reduction, if we need to verify the reduction process.
