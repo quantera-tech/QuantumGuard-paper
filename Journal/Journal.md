@@ -89,3 +89,15 @@ The coding steps include six sections of data pre-processing stage. Each section
 
 ## Ponder
 If we perform these 6 sections of coding steps to EMBER dataset’s feature vectors then we will be to get the qubits which we require for the QCNN architecture. We may perform a sanity visualization of pca30 reduction, if we need to verify the reduction process.
+
+
+# Sunday, July 27th, 2025
+
+## Discover
+Researched through the data pre-processing pipeline of BODMAS dataset. The data pre-processing is some extent complicated which is unlike to EMBER dataset.
+
+## Investigate
+The pre-processing pipeline of BODMAS dataset includes two major stage: 1) Conversion of PE files to image 2) Conversion of image to qubits. As PE files consists of multiple sections (.text, .data, .rdata etc.) it have to be processed individually using LIEF. 
+
+## Ponder
+The individual sections of PE files have to be pre-processed separately. Also, there might be some PE files which may not all the required sections. As a result, those empty sections have to be handled carefully.
