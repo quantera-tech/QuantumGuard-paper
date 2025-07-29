@@ -101,3 +101,15 @@ The pre-processing pipeline of BODMAS dataset includes two major stage: 1) Conve
 
 ## Ponder
 The individual sections of PE files have to be pre-processed separately. Also, there might be some PE files which may not all the required sections. As a result, those empty sections have to be handled carefully.
+
+
+# Monday, July 28th, 2025
+
+## Discover
+Continued to Research on data pre-processing pipeline of BODMAS dataset. Researched on the two major stage of data pre-processing of BODMAS dataset.
+
+## Investigate
+In the first stage of preprocessing pipeline we have to apply LIEF library. It will be applied on each of the PE files of BODMAS dataset. After the extraction we will get 5 different sections which includes .text, .data, rdata etc. Each of the sections will be converted into an image. As a result, one PE file equal to 5 images (if all of the sections present). In the second stage those images will be converted into qubits. 
+
+## Ponder
+In case of extraction of sections from the PE files, we will be focusing on mainly: .text, .data, .rdata, .rsrc and .reloc. In the first stage, the pre-processing may be a bit challenging, as we have to handle those 5 sections of images differently. 
