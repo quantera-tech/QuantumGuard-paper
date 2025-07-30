@@ -126,3 +126,15 @@ We have selected 5 different sections of the PE files of BODMAS dataset. Each of
 
 ## Ponder
 The 5 different sections of images will be a 2D representation of the grayscale values generated form the sections. These image is going to get used in the second stage of data pre-processing of BODMAS dataset. 
+
+
+# Wednesday, July 30th, 2025
+
+## Discover
+Researched on the coding steps of first stage of data pre-processing pipeline of BODMAS dataset.  
+
+## Investigate
+The coding steps of the pre-processing pipeline includes three crucial phase: 1) PE file parsing with LIEF 2) Target section identification 3) Section content conversion to 8x8 image.
+
+## Ponder
+If the three important steps of the first stage of the data pre-processing of BODMAS dataset are followed, then we would be able to get 8x8 image of the sections of PE files. Afterwards we can proceed to the second stage of pre-processing pipeline. 
