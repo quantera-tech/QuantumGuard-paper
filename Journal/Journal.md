@@ -113,3 +113,16 @@ In the first stage of preprocessing pipeline we have to apply LIEF library. It w
 
 ## Ponder
 In case of extraction of sections from the PE files, we will be focusing on mainly: .text, .data, .rdata, .rsrc and .reloc. In the first stage, the pre-processing may be a bit challenging, as we have to handle those 5 sections of images differently. 
+
+
+
+# Tuesday, July 29th, 2025
+
+## Discover
+Researched on the first stage of data pre-processing of BODMAS dataset and gathered knowledge of the steps of pre-processing pipeline.  
+
+## Investigate
+We have selected 5 different sections of the PE files of BODMAS dataset. Each of these sections will get trained individually on QCNN architecture. As a result, there will be 5 different sections of 8x8 images.  
+
+## Ponder
+The 5 different sections of images will be a 2D representation of the grayscale values generated form the sections. These image is going to get used in the second stage of data pre-processing of BODMAS dataset. 
