@@ -138,3 +138,15 @@ The coding steps of the pre-processing pipeline includes three crucial phase: 1)
 
 ## Ponder
 If the three important steps of the first stage of the data pre-processing of BODMAS dataset are followed, then we would be able to get 8x8 image of the sections of PE files. Afterwards we can proceed to the second stage of pre-processing pipeline. 
+
+
+# Thursday, July 31th, 2025
+
+## Discover
+Researched on the relation between SHA-256 with EMBER and BODMAS dataset. Researched on the characteristics of the SHA-256 hash. 
+
+## Investigate
+SHA-256 is a cybersecurity practice which acts as a digital fingerprint. It is useful for its unique sample identification, data integrity verification etc. The SHA-256 hash are provided alongside with the PE files and it is absent on feature vectors dataset.
+
+## Ponder
+As SHA-256 is provided with the binary PE files of BODMAS and EMBER dataset, its guarantees data integrity verification, unique sample identification, scientific validation etc. As a result, it is going to be an effective approach, if binary PE files get used instead of feature vectors. 
