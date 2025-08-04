@@ -162,3 +162,14 @@ The 64 pixel grayscale values would be reshaped into 8x8 images. Afterwards, tho
 
 ## Ponder
 The application and pca30 model training might be a bit challenging for each of the PE file sections. The 85% variance threshold has been set up to ensure the preservation of the data’s variability.
+
+# Monday, August 4th, 2025
+
+## Discover
+Researched on the coding steps of 2nd stage of data pre-processing BODMAS dataset. Focused on the angular hybrid embedding to the reduced pca30 features images and conversion into 8 qubits. 
+
+## Investigate
+The angular hybrid embedding maps the vector of pca30 features efficiently onto a quantum state using a specified number of qubits and a mixture of angular gates and entanglement patterns. In this case, the pca30 features are converted into 8 qubits.
+
+## Ponder
+The angular hybrid embedding technique is used to convert the pca30 into quantum states, due to its efficient use of qubits for high dimensional data. Also, it provides increased entanglement and has a better utilization of the NISQ-era devices. 
