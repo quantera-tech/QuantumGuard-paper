@@ -150,3 +150,15 @@ SHA-256 is a cybersecurity practice which acts as a digital fingerprint. It is u
 
 ## Ponder
 As SHA-256 is provided with the binary PE files of BODMAS and EMBER dataset, its guarantees data integrity verification, unique sample identification, scientific validation etc. As a result, it is going to be an effective approach, if binary PE files get used instead of feature vectors. 
+
+
+# Sunday, August 3rd, 2025
+
+## Discover
+Researched on the coding steps of 2nd stage of data pre-processing BODMAS dataset. Focused on the initialization of pca30 transformation of each section’s images, reshape into 8x8 images and pca30 model training on each sections data. 
+
+## Investigate
+The 64 pixel grayscale values would be reshaped into 8x8 images. Afterwards, those images will be flattened and trained using pca30 model for each sections. Then pca30 transformation will be applied and reduced into 30 features.
+
+## Ponder
+The application and pca30 model training might be a bit challenging for each of the PE file sections. The 85% variance threshold has been set up to ensure the preservation of the data’s variability.
