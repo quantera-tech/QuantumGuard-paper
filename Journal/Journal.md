@@ -172,4 +172,16 @@ Researched on the coding steps of 2nd stage of data pre-processing BODMAS datase
 The angular hybrid embedding maps the vector of pca30 features efficiently onto a quantum state using a specified number of qubits and a mixture of angular gates and entanglement patterns. In this case, the pca30 features are converted into 8 qubits.
 
 ## Ponder
-The angular hybrid embedding technique is used to convert the pca30 into quantum states, due to its efficient use of qubits for high dimensional data. Also, it provides increased entanglement and has a better utilization of the NISQ-era devices. 
+The angular hybrid embedding technique is used to convert the pca30 into quantum states, due to its efficient use of qubits for high dimensional data. Also, it provides increased entanglement and has a better utilization of the NISQ-era devices.
+
+
+# Tuesday, August 11th, 2025
+
+## Discover
+Executed the coding steps of feature vectors data pre-processing of BODMAS and EMBER dataset. 
+
+## Investigate
+After conducting several iterative trials and adjustments, up to PCA30 the notebook code cells got executed: load parquet feature vectors, data cleaning, Train/test split, Standardization. While executing the PCA30 the session got crashed due to limited amount of RAM storage.
+
+## Ponder
+To execute the PCA30 transformation of those pre-processed feature vectors 16 GB of RAM capacity was insufficient. Therefore, high RAM capacity is essential to execute the PCA30 transformation cell block. 
