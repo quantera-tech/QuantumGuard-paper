@@ -35,6 +35,23 @@ Yang et al. (2021) addressed the critical gap in malware research datasets by in
 
 Anderson and Roth (2018) introduced EMBER to address the longstanding absence of a large, openly shared benign–malicious Windows PE dataset suitable for training and evaluating static malware detection models. They extracted features from 1.1 million binaries—900 K for training (300 K benign, 300 K malicious, 300 K unlabeled) and 200 K for testing (100 K benign, 100 K malicious)—parsing PE headers, imports/exports, section metadata, and format-agnostic byte and string histograms, and packaging each sample as a JSON record with SHA-256, coarse timestamp, and label. Evaluating a baseline LightGBM gradient-boosted decision-tree on 2,351-dimensional feature vectors, they achieved ROC AUC > .999, 92.99% detection at 0.1% FPR, and 98.2% at 1% FPR, outperforming the featureless end-to-end MalConv deep network (AUC = .998, 92.2% at 0.1% FPR). Key findings demonstrate that hand-crafted static features still outpace raw-bytes deep learning for PE detection. Limitations include the lack of raw benign binaries (only hashes), which precludes certain dynamic or adversarial analyses, fixed pre-extracted features that constrain novel feature research, and the dataset’s focus on static analysis without unpacking or obfuscation handling. EMBER thus establishes a robust, extensible benchmark for advancing ML-based malware detection research.
 
+
+# Methodology
+
+## 1. Feature Vector Preprocessing Pipeline
+
+The EMBER and BODMAS datasets feature vectors preprocessing follows a systematic pipeline designed to transform high-dimensional malware feature vectors into quantum-compatible representations suitable for Quantum Convolutional Neural Network (QCNN) architectures. The methodology encompasses seven sequential stages to ensure optimal data preparation and dimensionality reduction while preserving critical discriminative information.
+
+### 1.1 Data Loading and Initial Processing
+
+The EMBER 2018 dataset, containing 1.1 million Windows portable executable (PE) files with 2,351 extracted features per sample, is loaded using memory-mapped arrays to efficiently handle the large-scale dataset. The initial preprocessing step involves filtering unlabeled samples by applying a binary mask to retain only samples with explicit benign (label = 0) or malicious (label = 1) classifications, removing approximately 300,000 unlabeled instances from the training corpus.
+
+### 1.2 Stratified Train-Test Partitioning
+A stratified train-test split is performed using an 80:20 ratio, ensuring balanced representation of both malicious and benign samples across training and testing partitions. The stratification process maintains the original class distribution, with random state seeding (seed = 42) ensuring reproducibility of experimental results. This partitioning strategy prevents class imbalance issues and enables robust model evaluation.
+
+
+
+
 ## Reference
 
 Quertier, R., Smith, J., & Zhao, L. (2023). _Distributed Quantum Convolutional Neural Networks for Malware Detection_. [arXiv](https://arxiv.org/pdf/2312.12161)
