@@ -49,6 +49,11 @@ The EMBER 2018 dataset, containing 1.1 million Windows portable executable (PE) 
 ### 1.2 Stratified Train-Test Partitioning
 A stratified train-test split is performed using an 80:20 ratio, ensuring balanced representation of both malicious and benign samples across training and testing partitions. The stratification process maintains the original class distribution, with random state seeding (seed = 42) ensuring reproducibility of experimental results. This partitioning strategy prevents class imbalance issues and enables robust model evaluation.
 
+### 1.3 Feature Standardization
+Z-score normalization is applied to all feature vectors to achieve zero mean and unit variance across the dataset. The standardization process utilizes the training set statistics (mean and standard deviation) for both training and testing data transformations, preventing data leakage and ensuring consistent scaling. This normalization step is critical for Principal Component Analysis convergence and quantum circuit parameter stability.
+
+### 1.4 Principal Component Analysis (PCA) Dimensionality Reduction
+Dimensionality reduction is performed using PCA with 30 principal components, selected to balance computational efficiency with information retention. The PCA transformation employs singular value decomposition (SVD) with the 'full' solver for optimal numerical stability. The explained variance ratio is computed to quantify the proportion of dataset variance captured by the selected components, typically retaining 85-95% of the original variance.
 
 
 
