@@ -56,6 +56,17 @@ Z-score normalization is applied to all feature vectors to achieve zero mean and
 Dimensionality reduction is performed using PCA with 30 principal components, selected to balance computational efficiency with information retention. The PCA transformation employs singular value decomposition (SVD) with the 'full' solver for optimal numerical stability. The explained variance ratio is computed to quantify the proportion of dataset variance captured by the selected components, typically retaining 85-95% of the original variance.
 
 
+### 3.5 Quantum Angle Normalization
+The PCA-transformed features undergo quantum angle normalization to map values into the range [0, π], making them compatible with quantum gate rotation parameters. The normalization function applies:
+
+X_normalized = (X_pca - X_min) / (X_max - X_min) × π
+
+where X_min and X_max represent the minimum and maximum values across training features for each principal component. This ensures all features fall within the valid quantum rotation angle range while preserving relative relationships between data points.
+
+### 3.6 Label Encoding for Quantum Classification
+Binary labels are transformed from {0, 1} to {-1, +1} format required by quantum classification algorithms. This encoding aligns with quantum measurement expectations where computational basis states correspond to classical binary outcomes, facilitating compatibility with quantum circuit measurement protocols.
+
+
 
 ## Reference
 
