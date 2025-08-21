@@ -56,15 +56,33 @@ Z-score normalization is applied to all feature vectors to achieve zero mean and
 Dimensionality reduction is performed using PCA with 30 principal components, selected to balance computational efficiency with information retention. The PCA transformation employs singular value decomposition (SVD) with the 'full' solver for optimal numerical stability. The explained variance ratio is computed to quantify the proportion of dataset variance captured by the selected components, typically retaining 85-95% of the original variance.
 
 
-### 3.5 Quantum Angle Normalization
+### 1.5 Quantum Angle Normalization
 The PCA-transformed features undergo quantum angle normalization to map values into the range [0, π], making them compatible with quantum gate rotation parameters. The normalization function applies:
 
 X_normalized = (X_pca - X_min) / (X_max - X_min) × π
 
 where X_min and X_max represent the minimum and maximum values across training features for each principal component. This ensures all features fall within the valid quantum rotation angle range while preserving relative relationships between data points.
 
-### 3.6 Label Encoding for Quantum Classification
+### 1.6 Label Encoding for Quantum Classification
 Binary labels are transformed from {0, 1} to {-1, +1} format required by quantum classification algorithms. This encoding aligns with quantum measurement expectations where computational basis states correspond to classical binary outcomes, facilitating compatibility with quantum circuit measurement protocols.
+
+## 1.7 Data Persistence and Validation
+Processed training and testing datasets are serialized using NumPy's compressed archive format (.npz) for efficient storage and retrieval. Quality assurance checks verify the quantum angle range constraints, label distribution consistency, and data integrity throughout the preprocessing pipeline. Preprocessing artifacts, including the fitted scaler and PCA transformer objects, are preserved to ensure consistent transformations during model inference.
+
+## 1.8 Pipeline Validation and Quality Metrics
+The preprocessing pipeline incorporates comprehensive validation metrics including:
+
+•	Explained variance ratio analysis for PCA component selection
+
+•	Feature distribution visualization through principal component scatter plots
+
+•	Quantum angle range verification (0 ≤ θ ≤ π)
+
+•	Class balance preservation across train-test splits
+
+•	Memory usage optimization for large-scale dataset processing
+
+This systematic preprocessing methodology ensures that high-dimensional malware feature vectors are transformed into quantum-compatible representations while maintaining discriminative information necessary for effective malware classification using quantum machine learning techniques.
 
 
 
