@@ -66,10 +66,10 @@ where X_min and X_max represent the minimum and maximum values across training f
 ### 1.6 Label Encoding for Quantum Classification
 Binary labels are transformed from {0, 1} to {-1, +1} format required by quantum classification algorithms. This encoding aligns with quantum measurement expectations where computational basis states correspond to classical binary outcomes, facilitating compatibility with quantum circuit measurement protocols.
 
-## 1.7 Data Persistence and Validation
+### 1.7 Data Persistence and Validation
 Processed training and testing datasets are serialized using NumPy's compressed archive format (.npz) for efficient storage and retrieval. Quality assurance checks verify the quantum angle range constraints, label distribution consistency, and data integrity throughout the preprocessing pipeline. Preprocessing artifacts, including the fitted scaler and PCA transformer objects, are preserved to ensure consistent transformations during model inference.
 
-## 1.8 Pipeline Validation and Quality Metrics
+### 1.8 Pipeline Validation and Quality Metrics
 The preprocessing pipeline incorporates comprehensive validation metrics including:
 
 •	Explained variance ratio analysis for PCA component selection
@@ -84,6 +84,17 @@ The preprocessing pipeline incorporates comprehensive validation metrics includi
 
 This systematic preprocessing methodology ensures that high-dimensional malware feature vectors are transformed into quantum-compatible representations while maintaining discriminative information necessary for effective malware classification using quantum machine learning techniques.
 
+
+## 2. PE File Preprocessing Pipeline
+
+This preprocessing workflow converts raw Windows PE binaries into quantum‐compatible feature representations, following a two‐stage pipeline: (1) section extraction and image conversion, and (2) PCA‐driven dimensionality reduction with angular embedding. Each step preserves critical structural and semantic information while preparing data for Quantum Convolutional Neural Network (QCNN) models.
+
+### Stage 1 – Section Extraction and 8×8 Image Conversion
+---
+
+### 2.1 PE File Parsing
+
+Each binary is parsed using the LIEF library, which provides access to the PE header and section table. Parsing success is verified by confirming that the resulting binary object is non‐null and by reporting key metadata—specifically, the total number of sections and the entry‐point address. This ensures that only valid, well‐formed PE files proceed to subsequent processing steps.
 
 
 ## Reference
