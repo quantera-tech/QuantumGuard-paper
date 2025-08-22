@@ -97,6 +97,13 @@ This preprocessing workflow converts raw Windows PE binaries into quantum‐comp
 Each binary is parsed using the LIEF library, which provides access to the PE header and section table. Parsing success is verified by confirming that the resulting binary object is non‐null and by reporting key metadata—specifically, the total number of sections and the entry‐point address. This ensures that only valid, well‐formed PE files proceed to subsequent processing steps.
 
 
+### 2.2 Target Section Identification
+Five sections are targeted based on their relevance to malware behaviors: the .text section containing executable code bytes, the .data section holding initialized global or static variables, the .rdata section storing read‐only literals and constants, the .rsrc section embedding resources such as icons or dialogs, and the .reloc section containing relocation tables for address fixing. Section headers are scanned sequentially, and names are cleaned of null padding before comparison. When a target section is found, its raw byte content is extracted; if a section is absent, it is flagged as “missing” and assigned a sentinel score of –1 for consistent handling downstream.
+
+### 2.3 8×8 Grayscale Image Conversion
+For each section marked as present, the first 64 bytes are extracted (or zero‐padded if the section length is shorter) to form a 64‐element vector. This vector is reshaped into an 8×8 matrix, with each byte value (0–255) interpreted as a grayscale pixel intensity. The resulting 8×8 images can be optionally saved as PNG files for visual inspection. Sections flagged as missing do not produce images but carry a “missing” flag, ensuring that absent data is explicitly tracked through the pipeline.
+
+
 ## Reference
 
 Quertier, R., Smith, J., & Zhao, L. (2023). _Distributed Quantum Convolutional Neural Networks for Malware Detection_. [arXiv](https://arxiv.org/pdf/2312.12161)
