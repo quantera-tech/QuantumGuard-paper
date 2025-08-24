@@ -103,7 +103,6 @@ Five sections are targeted based on their relevance to malware behaviors: the .t
 ### 2.3 8×8 Grayscale Image Conversion
 For each section marked as present, the first 64 bytes are extracted (or zero‐padded if the section length is shorter) to form a 64‐element vector. This vector is reshaped into an 8×8 matrix, with each byte value (0–255) interpreted as a grayscale pixel intensity. The resulting 8×8 images can be optionally saved as PNG files for visual inspection. Sections flagged as missing do not produce images but carry a “missing” flag, ensuring that absent data is explicitly tracked through the pipeline.
 
-
 ## Reference
 
 Quertier, R., Smith, J., & Zhao, L. (2023). _Distributed Quantum Convolutional Neural Networks for Malware Detection_. [arXiv](https://arxiv.org/pdf/2312.12161)
