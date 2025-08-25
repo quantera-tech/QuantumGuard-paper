@@ -103,6 +103,19 @@ Five sections are targeted based on their relevance to malware behaviors: the .t
 ### 2.3 8×8 Grayscale Image Conversion
 For each section marked as present, the first 64 bytes are extracted (or zero‐padded if the section length is shorter) to form a 64‐element vector. This vector is reshaped into an 8×8 matrix, with each byte value (0–255) interpreted as a grayscale pixel intensity. The resulting 8×8 images can be optionally saved as PNG files for visual inspection. Sections flagged as missing do not produce images but carry a “missing” flag, ensuring that absent data is explicitly tracked through the pipeline.
 
+### Stage 2 – PCA30 Reduction and Angular Hybrid Embedding
+---
+
+### 2.4 Data Preparation for PCA
+All 8×8 section images across the dataset are flattened into 64‐dimensional vectors. Binaries lacking a particular section are excluded from the PCA training set but are recorded by index so that the final transformed datasets maintain a consistent ordering.
+
+### 2.5 Section-Specific PCA30 Training
+A separate Principal Component Analysis model with 30 components is trained on the valid 64‐dimensional vectors for each section. During training, the explained variance ratio for each component is recorded, and the cumulative variance is expected to exceed 85%. The PCA implementation uses singular value decomposition with the “full” solver to maximize numerical stability.
+
+### 2.6 PCA Transformation
+Once trained, each PCA model transforms its corresponding section’s vectors (including placeholder vectors of all –1 for missing sections) into 30‐dimensional feature representations. Present sections thus yield informative 30‐element vectors, while missing sections consistently map to constant –1 vectors, enabling uniform feature dimensions across all samples.
+
+
 ## Reference
 
 Quertier, R., Smith, J., & Zhao, L. (2023). _Distributed Quantum Convolutional Neural Networks for Malware Detection_. [arXiv](https://arxiv.org/pdf/2312.12161)
