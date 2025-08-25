@@ -115,6 +115,14 @@ A separate Principal Component Analysis model with 30 components is trained on t
 ### 2.6 PCA Transformation
 Once trained, each PCA model transforms its corresponding section’s vectors (including placeholder vectors of all –1 for missing sections) into 30‐dimensional feature representations. Present sections thus yield informative 30‐element vectors, while missing sections consistently map to constant –1 vectors, enabling uniform feature dimensions across all samples.
 
+### 2.7 Quantum Angle Normalization
+Each non‐missing PCA feature vector is min–max scaled to the [0, π/2] range, aligning numerical values to valid quantum rotation angles. Vectors of –1 remain unchanged, serving as explicit indicators of missing data. This angular normalization ensures compatibility with quantum gate parameter requirements.
+
+### 2.8 Angular-Hybrid4 Embedding Configuration
+Each 30‐element angular vector is split into two contiguous 15‐element blocks, corresponding to two 4-qubit encoding circuits. This block partitioning supports the Angular-Hybrid4 embedding strategy, which encodes 15 classical values into a 4-qubit quantum state.
+
+### 2.9 Quantum Circuit Encoding
+Tak Hur’s Angular-Hybrid4 embedding is applied to each 15-element block using a sequence of controlled-RY and CNOT gates. Valid sections result in parameterized 4-qubit circuits, whereas missing sections invoke a placeholder encoding—such as identity operations or fixed qubit states—to maintain consistent circuit structure. The combined two blocks produce an 8-qubit state per section, ready for QCNN processing.
 
 ## Reference
 
