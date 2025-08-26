@@ -124,6 +124,18 @@ Each 30‐element angular vector is split into two contiguous 15‐element block
 ### 2.9 Quantum Circuit Encoding
 Tak Hur’s Angular-Hybrid4 embedding is applied to each 15-element block using a sequence of controlled-RY and CNOT gates. Valid sections result in parameterized 4-qubit circuits, whereas missing sections invoke a placeholder encoding—such as identity operations or fixed qubit states—to maintain consistent circuit structure. The combined two blocks produce an 8-qubit state per section, ready for QCNN processing.
 
+## Data Persistence and Validation
+
+### 2.10 Serialization
+Preprocessed datasets—comprising quantum angle arrays and binary labels encoded as {–1, +1}—are saved in compressed NumPy archives (.npz) to facilitate efficient loading in model training and inference.
+
+### 2.11 Artifact Preservation
+All preprocessing artifacts, including trained PCA models, scalers, and normalization parameters, are serialized via pickle or JSON, ensuring reproducibility and consistent application of transformations to future data.
+
+### 2.12 Validation Metrics
+The pipeline incorporates comprehensive validation measures: explained variance ratios confirm PCA model fidelity, histograms of quantum angles verify correct scaling, section-availability statistics quantify the prevalence of missing data, and train-test label distributions ensure class balance. Together, these checks guarantee data integrity and preparedness for downstream quantum machine learning experiments.
+
+
 ## Reference
 
 Quertier, R., Smith, J., & Zhao, L. (2023). _Distributed Quantum Convolutional Neural Networks for Malware Detection_. [arXiv](https://arxiv.org/pdf/2312.12161)
