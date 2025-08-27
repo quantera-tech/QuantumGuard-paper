@@ -11,30 +11,28 @@ Keywords: quantum machine learning, quantum convolutional neural networks, malwa
 ## Dataset
 
 ### BODMAS Dataset
-The BODMAS (Blue Hexagon Open Dataset for Malware Analysis) dataset represents a significant advancement in malware research infrastructure, addressing critical gaps in existing PE malware datasets that have limited researchers' ability to conduct comprehensive temporal analysis and concept drift studies. Developed through collaboration between Blue Hexagon and the University of Illinois at Urbana-Champaign, and introduced by Yang et al. in 2021, the dataset was specifically designed to overcome two major limitations in existing malware datasets: the lack of recent timestamped malware samples and the absence of well-curated family information. The dataset contains a comprehensive collection of 134,435 samples, comprising 57,293 malware samples and 77,142 benign samples, collected over a 13-month period from August 2019 to September 2020, making it one of the most temporally comprehensive malware datasets available for research purposes. Unlike earlier datasets such as the Microsoft Malware Classification Challenge or EMBER, which primarily focused on static snapshots of malware samples, BODMAS incorporates precise timestamp information based on VirusTotal reports, enabling researchers to analyze the temporal evolution of malware families and study concept drift phenomena where malware patterns evolve over time as attackers adapt their strategies to evade detection systems. 
+
+The BODMAS (Blue Hexagon Open Dataset for Malware Analysis) dataset represents a significant advancement in malware research infrastructure, addressing critical gaps in existing PE malware datasets that have limited researchers' ability to conduct comprehensive temporal analysis and concept drift studies. Developed through collaboration between Blue Hexagon and the University of Illinois at Urbana-Champaign, and introduced by Yang et al. in 2021, the dataset was specifically designed to overcome two major limitations in existing malware datasets: the lack of recent timestamped malware samples and the absence of well-curated family information. The dataset contains a comprehensive collection of 134,435 samples, comprising 57,293 malware samples and 77,142 benign samples, collected over a 13-month period from August 2019 to September 2020, making it one of the most temporally comprehensive malware datasets available for research purposes. Unlike earlier datasets such as the Microsoft Malware Classification Challenge or EMBER, which primarily focused on static snapshots of malware samples, BODMAS incorporates precise timestamp information based on VirusTotal reports, enabling researchers to analyze the temporal evolution of malware families and study concept drift phenomena where malware patterns evolve over time as attackers adapt their strategies to evade detection systems.
 
 The dataset's malware samples are categorized into 581 carefully curated families, representing a significant improvement over previous datasets that either lacked family information or provided poorly classified samples. The malware distribution includes major categories such as Trojan (29,972 samples, 52.3%), Worm (16,697 samples, 29.1%), Backdoor (7,331 samples, 12.8%), Downloader (1,031 samples, 1.8%), and Ransomware (821 samples, 1.4%), providing comprehensive coverage of the contemporary malware landscape. Each sample in the BODMAS dataset is represented as a 2,381-dimensional feature vector extracted using the LIEF (Library to Instrument Executable Formats) project version 0.9.0, following the same methodology as the EMBER dataset. The feature extraction process encompasses comprehensive static analysis of PE file characteristics, with features organized into seven distinct data types: continuous features, categorical features, hash categorical features, discrete features with large ranges, binary features, hash categorical discrete features, and memory-related features. The dataset is distributed in multiple formats, including feature vectors and metadata that are publicly available (bodmas.npz approximately 250 MB and bodmas_metadata.csv approximately 12 MB), while the original malware binaries are available upon request for research purposes.
-
 
 ### EMBER Dataset
 
 The EMBER (Endgame Malware BEnchmark for Research) dataset represents a cornerstone contribution to the malware detection research community, addressing a critical void in publicly available, large-scale benchmark datasets for training machine learning models to detect malicious Windows Portable Executable (PE) files. Developed by Anderson and Roth at Endgame Inc. and introduced in 2018, the dataset was specifically designed to overcome significant challenges that had previously hindered collaborative research in machine learning-based malware detection, including legal restrictions on sharing binaries, labeling complexities, and security liability concerns. The dataset comprises features extracted from 1.1 million binary files, with 900,000 training samples (300,000 malicious, 300,000 benign, and 300,000 unlabeled) and 200,000 test samples (100,000 malicious and 100,000 benign), making it substantially larger than previous datasets such as the Microsoft Malware Classification Challenge which contained only 20,000 samples.
 
-The EMBER dataset's distinctive architecture centers on its comprehensive feature extraction methodology that transforms raw PE files into structured, machine-learning-ready representations through the Library to Instrument Executable Formats (LIEF) project. Each sample in the dataset is represented as a 2,351-dimensional feature vector derived from eight distinct groups of raw features that capture both parsed PE file characteristics and format-agnostic statistical properties. The eight feature groups include general file information (containing file size, virtual size, number of imports/ sections, thread local storage, resources, relocations, signatures, and symbols), header information (encompassing COFF header data such as timestamps, target machine specifications, and image characteristics, alongside optional header details including subsystem information, DLL characteristics, version data, and size metrics), imported functions (parsed from the import address table and vectorized using feature hashing with 256 bins for libraries and 1,024 bins for individual functions), exported functions (summarized using 128-bin feature hashing), and section information (including section names, sizes, entropy values, virtual sizes, and characteristics, with 50 bins allocated for each metric).  
+The EMBER dataset's distinctive architecture centers on its comprehensive feature extraction methodology that transforms raw PE files into structured, machine-learning-ready representations through the Library to Instrument Executable Formats (LIEF) project. Each sample in the dataset is represented as a 2,351-dimensional feature vector derived from eight distinct groups of raw features that capture both parsed PE file characteristics and format-agnostic statistical properties. The eight feature groups include general file information (containing file size, virtual size, number of imports/ sections, thread local storage, resources, relocations, signatures, and symbols), header information (encompassing COFF header data such as timestamps, target machine specifications, and image characteristics, alongside optional header details including subsystem information, DLL characteristics, version data, and size metrics), imported functions (parsed from the import address table and vectorized using feature hashing with 256 bins for libraries and 1,024 bins for individual functions), exported functions (summarized using 128-bin feature hashing), and section information (including section names, sizes, entropy values, virtual sizes, and characteristics, with 50 bins allocated for each metric).
 
 The dataset's temporal structure and labeling methodology reflect careful consideration of real-world malware evolution patterns, with samples temporally split between training and test sets to mimic generational dependencies of both malicious and benign software. Each sample includes SHA-256 hash identifiers, coarse temporal information with month-level resolution, and labels indicating benign (0), malicious (1), or unlabeled (-1) status. The labeling process employed rigorous validation through VirusTotal, ensuring that benign samples showed no vendor detections and malicious samples were flagged by more than 40 vendors, establishing EMBER as what the authors characterize as a relatively "easy" dataset for establishing baseline performance metrics. The inclusion of 300,000 unlabeled samples in the training set was specifically designed to encourage research in semi-supervised learning approaches, representing a relatively unexplored area in malware classification literature at the time of the dataset's release.
 
 ## Related Works
+
 Quertier _et al._ (2023) address the challenges of limited qubit availability and information loss in quantum-based malware detection. The authors note that traditional QCNNs, constrained to eight or fewer qubits, have historically underperformed compared to classical models, particularly when tasked with analyzing high-dimensional malware binary images. To overcome this, the researchers introduce a **distributed QCNN** framework that decomposes each malware binary into five critical Portable Executable (PE) sections (.text, .data, .rdata, .rsrc, .reloc), converting each into an 8 × 8 grayscale image. Each section is then processed by a dedicated 8-qubit QCNN employing parameterized entangling gates for convolution and pooling layers for dimensionality reduction, with data encoded via angle embedding. The outputs—section scores or a value of -1 for missing sections—are then integrated through an XGBoost classifier for final malware or benign classification. The dataset is sourced from **BODMAS** and **PEMachineLearning** repositories, comprising tens of thousands of labeled PE files, and is split into subsets for QCNN training, scoring-function training, and final testing. Results show that while individual QCNNs on sections like _.rdata_ achieve moderate F1-scores (up to 0.78), the hybrid approach with XGBoost significantly outperforms both single-QCNN and classical baselines, reaching **83 % accuracy** and a **0.83 F1-score**—representing a _20 % improvement_ over monolithic QCNN models. The findings highlight the particular significance of the _.rdata_ and _.rsrc_ sections for malware detection, the utility of treating missing sections as informative features, and the synergy between quantum and classical methods for robust classification. The architecture is also scalable, allowing new sections to be added without retraining existing QCNNs. The authors recommend future research on incorporating additional PE sections, optimizing QCNN architectures for specific section types, and exploring weighted scoring strategies to further enhance detection performance.
 
 Akash _et al._ (2022) highlighted the growing concern of malware threats targeting smart grid devices, particularly due to the increased connectivity and seamless firmware updates in modern power systems1. One notable study proposes a cloud-based, device-specific malware detection system that leverages a Quantum Convolutional Neural Network (QCNN) integrated with Deep Transfer Learning (DTL) to address the limitations of classical machine learning approaches in this domain. The primary challenge tackled by this research is the inadequacy of conventional CNNs to extract deep, discriminative features from malware image files, especially under the computational constraints of current quantum hardware, which limits the number of available qubits and thus the input image size. To overcome this, the authors design a QCNN architecture that encodes malware binaries—collected from both benign firmware and manipulated Conti ransomware—into grayscale images suitable for quantum processing, with further dimensionality reduction to fit within a seven-qubit limit. The QCNN employs quantum circuits, including RY gates for data encoding and controlled-rotation gates for convolution, inspired by classical Sobel filters, to enhance feature extraction. The DTL component utilizes a pre-trained ResNet50V2 model, retraining only the final layers on device-specific data to adapt to new smart grid devices without losing generalization. The system is deployed on the IBM Watson Studio cloud platform, utilizing IBM Quantum processors for the quantum computations. Experimental results demonstrate that the QCNN-based approach achieves higher detection accuracy and faster convergence compared to classical CNNs, validating the effectiveness of quantum feature extraction in malware discrimination. However, the study also acknowledges limitations such as the need for aggressive image downscaling due to qubit constraints, focus on a narrow range of malware types, and reliance on specific quantum hardware, with future work suggested to address broader malware scenarios, improve noise resilience, and expand device applicability
 
-
 Yang et al. (2021) addressed the critical gap in malware research datasets by introducing BODMAS (Blue Hexagon Open Dataset for Malware AnalysiS), which specifically tackles two fundamental limitations in existing PE malware datasets: the absence of recent timestamped malware samples and the lack of well-curated family information essential for temporal analysis and concept drift studies. Recognizing that previous datasets like Microsoft Malware Classification Challenge, EMBER, UCSB-Packed, and SOREL-20M either contained outdated samples (2017-2019), insufficient family labels, or lacked temporal metadata, the authors compiled a comprehensive dataset containing 57,293 malware samples and 77,142 benign samples collected from August 2019 to September 2020, meticulously labeled across 581 malware families by security analysts using both automated scripts and manual verification. The dataset structure provides SHA-256 hashes, original PE binaries (malware only), 2,381-dimensional feature vectors compatible with EMBER format, ground-truth binary labels, curated family information, and first-seen timestamps based on VirusTotal reports. Through extensive empirical analysis using Gradient Boosted Decision Trees (GBDT) and Deep Neural Networks across different time periods, the study demonstrated significant concept drift effects where classifiers trained on older datasets showed degraded performance on newer data, with F1 scores dropping substantially over time, particularly revealing that unseen malware families contributed to false negative rates as high as 43.04% compared to 6% for known families. Key findings established that concept drift primarily stems from the emergence of new malware families rather than evolution within existing families, and that periodic retraining with minimal labeled data (1% monthly) or training classifiers on recent data significantly mitigates performance degradation. However, the study's limitations include the unavailability of benign binaries due to copyright restrictions, preliminary analysis scope focusing primarily on static features without addressing packed/obfuscated malware challenges, reliance on automated family labeling scripts that may introduce noise for novel variants, and the constrained temporal window (one year) which may not capture longer-term malware evolution patterns. Despite these constraints, BODMAS represents a foundational contribution to malware research infrastructure, enabling systematic evaluation of concept drift adaptation strategies and providing a robust benchmark for developing more resilient, temporally-aware malware detection systems.
 
-
 Anderson and Roth (2018) introduced EMBER to address the longstanding absence of a large, openly shared benign–malicious Windows PE dataset suitable for training and evaluating static malware detection models. They extracted features from 1.1 million binaries—900 K for training (300 K benign, 300 K malicious, 300 K unlabeled) and 200 K for testing (100 K benign, 100 K malicious)—parsing PE headers, imports/exports, section metadata, and format-agnostic byte and string histograms, and packaging each sample as a JSON record with SHA-256, coarse timestamp, and label. Evaluating a baseline LightGBM gradient-boosted decision-tree on 2,351-dimensional feature vectors, they achieved ROC AUC > .999, 92.99% detection at 0.1% FPR, and 98.2% at 1% FPR, outperforming the featureless end-to-end MalConv deep network (AUC = .998, 92.2% at 0.1% FPR). Key findings demonstrate that hand-crafted static features still outpace raw-bytes deep learning for PE detection. Limitations include the lack of raw benign binaries (only hashes), which precludes certain dynamic or adversarial analyses, fixed pre-extracted features that constrain novel feature research, and the dataset’s focus on static analysis without unpacking or obfuscation handling. EMBER thus establishes a robust, extensible benchmark for advancing ML-based malware detection research.
-
 
 # Methodology
 
@@ -47,16 +45,19 @@ The EMBER and BODMAS datasets feature vectors preprocessing follows a systematic
 The EMBER 2018 dataset, containing 1.1 million Windows portable executable (PE) files with 2,351 extracted features per sample, is loaded using memory-mapped arrays to efficiently handle the large-scale dataset. The initial preprocessing step involves filtering unlabeled samples by applying a binary mask to retain only samples with explicit benign (label = 0) or malicious (label = 1) classifications, removing approximately 300,000 unlabeled instances from the training corpus.
 
 ### 1.2 Stratified Train-Test Partitioning
+
 A stratified train-test split is performed using an 80:20 ratio, ensuring balanced representation of both malicious and benign samples across training and testing partitions. The stratification process maintains the original class distribution, with random state seeding (seed = 42) ensuring reproducibility of experimental results. This partitioning strategy prevents class imbalance issues and enables robust model evaluation.
 
 ### 1.3 Feature Standardization
+
 Z-score normalization is applied to all feature vectors to achieve zero mean and unit variance across the dataset. The standardization process utilizes the training set statistics (mean and standard deviation) for both training and testing data transformations, preventing data leakage and ensuring consistent scaling. This normalization step is critical for Principal Component Analysis convergence and quantum circuit parameter stability.
 
 ### 1.4 Principal Component Analysis (PCA) Dimensionality Reduction
+
 Dimensionality reduction is performed using PCA with 30 principal components, selected to balance computational efficiency with information retention. The PCA transformation employs singular value decomposition (SVD) with the 'full' solver for optimal numerical stability. The explained variance ratio is computed to quantify the proportion of dataset variance captured by the selected components, typically retaining 85-95% of the original variance.
 
-
 ### 1.5 Quantum Angle Normalization
+
 The PCA-transformed features undergo quantum angle normalization to map values into the range [0, π], making them compatible with quantum gate rotation parameters. The normalization function applies:
 
 X_normalized = (X_pca - X_min) / (X_max - X_min) × π
@@ -64,86 +65,99 @@ X_normalized = (X_pca - X_min) / (X_max - X_min) × π
 where X_min and X_max represent the minimum and maximum values across training features for each principal component. This ensures all features fall within the valid quantum rotation angle range while preserving relative relationships between data points.
 
 ### 1.6 Label Encoding for Quantum Classification
+
 Binary labels are transformed from {0, 1} to {-1, +1} format required by quantum classification algorithms. This encoding aligns with quantum measurement expectations where computational basis states correspond to classical binary outcomes, facilitating compatibility with quantum circuit measurement protocols.
 
 ### 1.7 Data Persistence and Validation
+
 Processed training and testing datasets are serialized using NumPy's compressed archive format (.npz) for efficient storage and retrieval. Quality assurance checks verify the quantum angle range constraints, label distribution consistency, and data integrity throughout the preprocessing pipeline. Preprocessing artifacts, including the fitted scaler and PCA transformer objects, are preserved to ensure consistent transformations during model inference.
 
 ### 1.8 Pipeline Validation and Quality Metrics
+
 The preprocessing pipeline incorporates comprehensive validation metrics including:
 
-•	Explained variance ratio analysis for PCA component selection
+• Explained variance ratio analysis for PCA component selection
 
-•	Feature distribution visualization through principal component scatter plots
+• Feature distribution visualization through principal component scatter plots
 
-•	Quantum angle range verification (0 ≤ θ ≤ π)
+• Quantum angle range verification (0 ≤ θ ≤ π)
 
-•	Class balance preservation across train-test splits
+• Class balance preservation across train-test splits
 
-•	Memory usage optimization for large-scale dataset processing
+• Memory usage optimization for large-scale dataset processing
 
 This systematic preprocessing methodology ensures that high-dimensional malware feature vectors are transformed into quantum-compatible representations while maintaining discriminative information necessary for effective malware classification using quantum machine learning techniques.
 
+![Feature Vector Pipeline](./feature-vector-preprocessing-pipeline.png)
 
 ## 2. PE File Preprocessing Pipeline
 
 This preprocessing workflow converts raw Windows PE binaries into quantum‐compatible feature representations, following a two‐stage pipeline: (1) section extraction and image conversion, and (2) PCA‐driven dimensionality reduction with angular embedding. Each step preserves critical structural and semantic information while preparing data for Quantum Convolutional Neural Network (QCNN) models.
 
 ### Stage 1 – Section Extraction and 8×8 Image Conversion
+
 ---
 
 ### 2.1 PE File Parsing
 
 Each binary is parsed using the LIEF library, which provides access to the PE header and section table. Parsing success is verified by confirming that the resulting binary object is non‐null and by reporting key metadata—specifically, the total number of sections and the entry‐point address. This ensures that only valid, well‐formed PE files proceed to subsequent processing steps.
 
-
 ### 2.2 Target Section Identification
+
 Five sections are targeted based on their relevance to malware behaviors: the .text section containing executable code bytes, the .data section holding initialized global or static variables, the .rdata section storing read‐only literals and constants, the .rsrc section embedding resources such as icons or dialogs, and the .reloc section containing relocation tables for address fixing. Section headers are scanned sequentially, and names are cleaned of null padding before comparison. When a target section is found, its raw byte content is extracted; if a section is absent, it is flagged as “missing” and assigned a sentinel score of –1 for consistent handling downstream.
 
 ### 2.3 8×8 Grayscale Image Conversion
+
 For each section marked as present, the first 64 bytes are extracted (or zero‐padded if the section length is shorter) to form a 64‐element vector. This vector is reshaped into an 8×8 matrix, with each byte value (0–255) interpreted as a grayscale pixel intensity. The resulting 8×8 images can be optionally saved as PNG files for visual inspection. Sections flagged as missing do not produce images but carry a “missing” flag, ensuring that absent data is explicitly tracked through the pipeline.
 
 ### Stage 2 – PCA30 Reduction and Angular Hybrid Embedding
+
 ---
 
 ### 2.4 Data Preparation for PCA
+
 All 8×8 section images across the dataset are flattened into 64‐dimensional vectors. Binaries lacking a particular section are excluded from the PCA training set but are recorded by index so that the final transformed datasets maintain a consistent ordering.
 
 ### 2.5 Section-Specific PCA30 Training
+
 A separate Principal Component Analysis model with 30 components is trained on the valid 64‐dimensional vectors for each section. During training, the explained variance ratio for each component is recorded, and the cumulative variance is expected to exceed 85%. The PCA implementation uses singular value decomposition with the “full” solver to maximize numerical stability.
 
 ### 2.6 PCA Transformation
+
 Once trained, each PCA model transforms its corresponding section’s vectors (including placeholder vectors of all –1 for missing sections) into 30‐dimensional feature representations. Present sections thus yield informative 30‐element vectors, while missing sections consistently map to constant –1 vectors, enabling uniform feature dimensions across all samples.
 
 ### 2.7 Quantum Angle Normalization
+
 Each non‐missing PCA feature vector is min–max scaled to the [0, π/2] range, aligning numerical values to valid quantum rotation angles. Vectors of –1 remain unchanged, serving as explicit indicators of missing data. This angular normalization ensures compatibility with quantum gate parameter requirements.
 
 ### 2.8 Angular-Hybrid4 Embedding Configuration
+
 Each 30‐element angular vector is split into two contiguous 15‐element blocks, corresponding to two 4-qubit encoding circuits. This block partitioning supports the Angular-Hybrid4 embedding strategy, which encodes 15 classical values into a 4-qubit quantum state.
 
 ### 2.9 Quantum Circuit Encoding
+
 Tak Hur’s Angular-Hybrid4 embedding is applied to each 15-element block using a sequence of controlled-RY and CNOT gates. Valid sections result in parameterized 4-qubit circuits, whereas missing sections invoke a placeholder encoding—such as identity operations or fixed qubit states—to maintain consistent circuit structure. The combined two blocks produce an 8-qubit state per section, ready for QCNN processing.
 
 ## Data Persistence and Validation
 
 ### 2.10 Serialization
+
 Preprocessed datasets—comprising quantum angle arrays and binary labels encoded as {–1, +1}—are saved in compressed NumPy archives (.npz) to facilitate efficient loading in model training and inference.
 
 ### 2.11 Artifact Preservation
+
 All preprocessing artifacts, including trained PCA models, scalers, and normalization parameters, are serialized via pickle or JSON, ensuring reproducibility and consistent application of transformations to future data.
 
 ### 2.12 Validation Metrics
-The pipeline incorporates comprehensive validation measures: explained variance ratios confirm PCA model fidelity, histograms of quantum angles verify correct scaling, section-availability statistics quantify the prevalence of missing data, and train-test label distributions ensure class balance. Together, these checks guarantee data integrity and preparedness for downstream quantum machine learning experiments.
 
+The pipeline incorporates comprehensive validation measures: explained variance ratios confirm PCA model fidelity, histograms of quantum angles verify correct scaling, section-availability statistics quantify the prevalence of missing data, and train-test label distributions ensure class balance. Together, these checks guarantee data integrity and preparedness for downstream quantum machine learning experiments.
 
 ## Reference
 
 Quertier, R., Smith, J., & Zhao, L. (2023). _Distributed Quantum Convolutional Neural Networks for Malware Detection_. [arXiv](https://arxiv.org/pdf/2312.12161)
 
-Akash, A. R., Ahn, B., Jenkins, A., Khot, A., Silva, L., Tavares-Vengas, H., & Kim, T. (2022). Quantum Convolutional Neural Network-based Online Malware File Detection for Smart Grid Devices. *Proceedings of the 2022 IEEE Conference*. [https://par.nsf.gov/servlets/purl/10566964](https://par.nsf.gov/servlets/purl/10566964)
+Akash, A. R., Ahn, B., Jenkins, A., Khot, A., Silva, L., Tavares-Vengas, H., & Kim, T. (2022). Quantum Convolutional Neural Network-based Online Malware File Detection for Smart Grid Devices. _Proceedings of the 2022 IEEE Conference_. [https://par.nsf.gov/servlets/purl/10566964](https://par.nsf.gov/servlets/purl/10566964)
 
 Yang, L., Ciptadi, A., Laziuk, I., Ahmadzadeh, A., & Wang, G. (2021). BODMAS: An Open Dataset for Learning based Temporal Analysis of PE Malware. Proceedings of the 2021 IEEE Symposium on Security and Privacy Workshops (SPW). IEEE, pp. 78-84 [Research Gate](https://www.researchgate.net/publication/353107061_BODMAS_An_Open_Dataset_for_Learning_based_Temporal_Analysis_of_PE_Malware)
 
-
 Anderson, H. S., & Roth, P. (2018). EMBER: An open dataset for training static PE malware machine learning models. arXiv preprint arXiv:1804.04637
-
