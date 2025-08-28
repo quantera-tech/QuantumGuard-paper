@@ -152,6 +152,10 @@ All preprocessing artifacts, including trained PCA models, scalers, and normaliz
 
 The pipeline incorporates comprehensive validation measures: explained variance ratios confirm PCA model fidelity, histograms of quantum angles verify correct scaling, section-availability statistics quantify the prevalence of missing data, and train-test label distributions ensure class balance. Together, these checks guarantee data integrity and preparedness for downstream quantum machine learning experiments.
 
+
+![Feature Vector Pipeline](./pe-file-preprocessing-pipeline.png)
+
+
 ## Reference
 
 Quertier, R., Smith, J., & Zhao, L. (2023). _Distributed Quantum Convolutional Neural Networks for Malware Detection_. [arXiv](https://arxiv.org/pdf/2312.12161)
